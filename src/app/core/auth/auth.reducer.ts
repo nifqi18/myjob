@@ -4,41 +4,60 @@ export const AUTH_KEY = 'AUTH';
 
 export enum AuthActionTypes {
   LOGIN = '[Auth] Login',
-  LOGOUT = '[Auth] Logout'
+  LOGOUT = '[Auth] Logout',
+  SAVE = '[Auth] CurrentUser'
+}
+
+export class ActionAuthUser implements Action {
+  constructor(public payload) { }
+  readonly type = AuthActionTypes.SAVE;
 }
 
 export class ActionAuthLogin implements Action {
+  constructor(public payload) { }
   readonly type = AuthActionTypes.LOGIN;
 }
 
 export class ActionAuthLogout implements Action {
+  constructor(public payload) { }
   readonly type = AuthActionTypes.LOGOUT;
 }
 
-export type AuthActions = ActionAuthLogin | ActionAuthLogout;
+export type AuthActions =  ActionAuthLogout | ActionAuthLogin | ActionAuthUser;
 
-export const initialState: AuthState = {
-  isAuthenticated: false
-};
+export const myInitialState: Auth = {
+  Store: {
+    token: '',
+    type:'',
+  }
+}
 
 export const selectorAuth = state => state.auth;
 
 export function authReducer(
-  state: AuthState = initialState,
+  state: Auth = myInitialState,
   action: AuthActions
-): AuthState {
+): Auth {
   switch (action.type) {
     case AuthActionTypes.LOGIN:
-      return { ...state, isAuthenticated: true };
-
+      return { ...state, Store: action.payload }
     case AuthActionTypes.LOGOUT:
-      return { ...state, isAuthenticated: false };
+      return { ...state, Store: { token : '' , type : '' } }
+    case AuthActionTypes.SAVE:
+      return { ...state, Store: action.payload }
 
     default:
       return state;
   }
 }
 
-export interface AuthState {
-  isAuthenticated: boolean;
+
+
+export type UserStore = {
+ token : string,
+ type : string
+}
+
+export interface Auth {
+  Store: UserStore
 }

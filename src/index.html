@@ -1,22 +1,32 @@
 <!doctype html>
-<html>
+<html lang="en">
+
 <head>
   <base href="/">
-  <title>AngularNgrxMaterialStarter</title>
+  <title>Lowongan ID</title>
 
   <meta charset="utf-8">
+  <meta http-equiv="refresh">
+  <meta name="Description" content="Lowongan Kerja Indonesia">
+
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:title" content="Angular NgRx Material Starter Project by @tomastrajan">
-  <meta property="og:description" content="Angular NgRx Material Starter project with all the best practices, features and usage examples">
+  <meta property="og:title" content="Lowongan Kerja Indonesia, Lowongan Programmer Indonesia , Lowongan Magang Indonesia">
+  <meta property="og:description" content="Berisi jutaan lowongan kerja yang tersebar diseluruh indonesia">
   <meta property="og:image" content="/angular-ngrx-material-starter/intro.3e2d7713f2cb475efa85.jpg">
-  <meta property="og:url" content="https://tomastrajan.github.io/angular-ngrx-material-starter">
+  <meta name="theme-color" content="#317EFB" />
 
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--<link rel="preload" href="https://fonts.googleapis.com/icon?family=Material+Icons" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  -->
+
+  <link rel="manifest" href="assets/manifest.json">
+
   <style type="text/css">
-    body, html {
+    body,
+    html {
       height: 100%;
     }
+
     .app-loading {
       position: relative;
       display: flex;
@@ -47,6 +57,12 @@
       stroke: #ddd;
     }
 
+    .app-loading .logo {
+      width: 100px;
+      height: 100px;
+      background: url(./assets/logo.png) center center no-repeat;
+    }
+
     @keyframes rotate {
       100% {
         transform: rotate(360deg);
@@ -67,25 +83,124 @@
         stroke-dashoffset: -124px;
       }
     }
+
+    .placeholder-content {
+      position: absolute;
+      display: block;
+      width: 100%;
+      top: 0;
+      z-index: 9999;
+    }
+
+
+    .sk-cube-grid {
+      width: 40px;
+      height: 40px;
+      margin: 100px auto;
+    }
+
+    .sk-cube-grid .sk-cube {
+      width: 33%;
+      height: 33%;
+      background-color: #283593;
+      float: left;
+      -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+      animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+      filter: opacity(67%);
+    }
+
+    .sk-cube-grid .sk-cube1 {
+      -webkit-animation-delay: 0.2s;
+      animation-delay: 0.2s;
+    }
+
+    .sk-cube-grid .sk-cube2 {
+      -webkit-animation-delay: 0.3s;
+      animation-delay: 0.3s;
+    }
+
+    .sk-cube-grid .sk-cube3 {
+      -webkit-animation-delay: 0.4s;
+      animation-delay: 0.4s;
+    }
+
+    .sk-cube-grid .sk-cube4 {
+      -webkit-animation-delay: 0.1s;
+      animation-delay: 0.1s;
+    }
+
+    .sk-cube-grid .sk-cube5 {
+      -webkit-animation-delay: 0.2s;
+      animation-delay: 0.2s;
+    }
+
+    .sk-cube-grid .sk-cube6 {
+      -webkit-animation-delay: 0.3s;
+      animation-delay: 0.3s;
+    }
+
+    .sk-cube-grid .sk-cube7 {
+      -webkit-animation-delay: 0s;
+      animation-delay: 0s;
+    }
+
+    .sk-cube-grid .sk-cube8 {
+      -webkit-animation-delay: 0.1s;
+      animation-delay: 0.1s;
+    }
+
+    .sk-cube-grid .sk-cube9 {
+      -webkit-animation-delay: 0.2s;
+      animation-delay: 0.2s;
+    }
+
+    @-webkit-keyframes sk-cubeGridScaleDelay {
+      0%,
+      70%,
+      100% {
+        -webkit-transform: scale3D(1, 1, 1);
+        transform: scale3D(1, 1, 1);
+      }
+      35% {
+        -webkit-transform: scale3D(0, 0, 1);
+        transform: scale3D(0, 0, 1);
+      }
+    }
+
+    @keyframes sk-cubeGridScaleDelay {
+      0%,
+      70%,
+      100% {
+        -webkit-transform: scale3D(1, 1, 1);
+        transform: scale3D(1, 1, 1);
+      }
+      35% {
+        -webkit-transform: scale3D(0, 0, 1);
+        transform: scale3D(0, 0, 1);
+      }
+    }
   </style>
 </head>
+
 <body>
-  <anms-root>
+  <dbs-root>
     <div class="app-loading">
       <div class="logo"></div>
       <svg class="spinner" viewBox="25 25 50 50">
-        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
       </svg>
     </div>
-  </anms-root>
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  </dbs-root>
 
-    ga('create', 'UA-53234284-5', 'auto');
-    ga('send', 'pageview');
-  </script>
+  <noscript>
+    <h3 style="color: #673ab7; font-family: Helvetica; margin: 2rem; margin-top: 153px;">
+      Sorry, but app is not available without javascript
+    </h3>
+  </noscript>
+
+
+
 </body>
+
 </html>
+<!-- >ng serve --port 4500 --aot --prod -->

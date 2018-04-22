@@ -3,7 +3,6 @@
 @import '../node_modules/bootstrap/scss/bootstrap-reboot';
 @import '../node_modules/bootstrap/scss/bootstrap-grid';
 
-@import '../node_modules/font-awesome/scss/font-awesome';
 
 @import 'styles-reset';
 
@@ -19,7 +18,7 @@
 @import 'styles-reset.scss-theme';
 @import 'app/app.component.scss-theme';
 @import 'app/shared/big-input/big-input.component.scss-theme';
-@import 'app/static/about/about.component.scss-theme';
+@import 'app/page/about/about.component.scss-theme';
 @import 'app/examples/todos/todos.component.scss-theme';
 @import 'app/examples/stock-market/stock-market.component.scss-theme';
 @import 'app/examples/theming/parent/parent.component.scss-theme';
@@ -54,4 +53,256 @@
 .nature-theme {
   @include angular-material-theme($anms-nature-theme);
   @include custom-components-theme($anms-nature-theme);
+}
+
+
+
+.full-width{
+    width: 100%;
+}
+
+.mat-dialog-container {
+    overflow: hidden !important;
+    position: relative;
+    display: block;
+    background: #f6f4f8;
+}
+
+
+.pointer{
+    pointer-events: none;
+}
+.inline-flex {
+    display: inline-flex;
+}
+
+.margin-left-5 {
+    margin-left: 5px;
+}
+.end {
+    position: relative;
+    text-align: end;
+    padding-top: 10px;
+
+    .button-round {
+        border: #bebecc solid;
+        border-width: 1.5px;
+        border-radius: 4px;
+        z-index: 2 !important;
+    }
+
+   
+}
+.white {
+    background : white;
+}
+.bordered {
+    border : 1px solid rgba(0,0,0,.12);
+}
+.border-top {
+    border-top: 1px solid rgba(0,0,0,.12);
+}
+.border-bottom {
+    border-bottom :1px solid rgba(0,0,0,.12);
+}
+
+
+.padding-left {
+    padding-left : 10px;
+    background: white;
+}
+
+.padding-left[small]{
+    padding-left : 5px;
+}
+
+.padding-bottom {
+    padding-bottom: 10px;
+}
+
+.main-top-panel {
+    display: block;
+    margin-top: 8px;
+    margin-bottom: 3.4px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 4px;
+    p {
+        margin-bottom: 2px;
+    }
+}
+
+.animate {
+  opacity: 0;
+  transition: all 1s;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  &.zoom-in {
+    transform: scale(0.1);
+    &.img-fluid {
+        display: block;
+        margin: 0 auto;
+        &.active {
+            opacity: 1;
+            transform: translateX(0) translateY(0) rotateZ(0) scale(1);
+        }
+    }
+
+  }
+}
+
+.line-bottom {
+  border-bottom : 1px solid rgba(0,0,0,.12);
+}
+
+.mat-raised-button[fullscreen],
+.mat-button[fullscreen]{
+  width: 100%;
+  text-align: left;
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+.panel-right.color {
+  background: white;
+}
+.margin-top-10 {
+    margin-top : 10px;
+}
+.padding-left-10 {
+    padding-left : 10px;
+}
+.padding-right-10 {
+    padding-right: 10px;
+}
+.margin-bottom-10 {
+    margin-bottom : 10px;
+}
+.margin-top {
+  margin-top: 20px;
+}
+.margin-top[large] {
+  margin-top: 50px;
+  margin-right: 20px;
+}
+.margin-right-10 {
+    margin-right: 10px;
+}
+.margin-left-10 {
+  margin-left: 10px;
+}
+
+.panel-middle {
+  background: white;
+  margin-bottom: 20px;
+  width: 100%;
+  @media (min-width: 768px) and (max-width : 1023px){
+    left: 0;
+  }
+}
+
+.absolute {
+    position: absolute !important;
+}
+
+mat-card[fullscreen]{
+    width: 100%;
+}
+
+.panel-left {
+   background: red;
+   position: relative;
+   display: none;
+   margin-right: 5px;
+   margin-bottom : 20px;
+   margin-top: 50px;
+   padding-left: 17px;
+   padding-right: 3px;
+   @media (min-width : 768px) {
+      display: block;
+      padding-top: 50px;
+      background: transparent;
+   }
+
+}
+
+mat-form-field[fullscreen] {
+    width: 100%;
+}
+
+.ukuran-middle {
+    width: 300px;
+
+    height: 300px;
+}
+.containner {
+    overflow: hidden;
+}
+.app-loading {
+    padding: 50px 0;
+    position: relative;
+    
+    p {
+        margin : 0;
+        font-size: smaller;
+    }
+    .containner-wrapper{
+        text-align: center;
+        margin: 3% 20% 0 20%;
+    }
+    .mat-card {
+        border-radius : 20px;
+    }
+
+}
+
+
+.toolbar-fullscreen {
+    display: none;
+}
+
+.index-9 {
+    z-index: 9 !important;
+}
+
+
+.toolbar-filler {
+    flex: 1 1 auto;
+}
+
+.hidden {
+    display: none !important;
+    &.show {
+        display: block !important;
+    }
+}
+.top-small{
+    top : -140px;
+    position: relative;
+}
+.full-center {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    top: 0;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+}
+
+body {
+    text-rendering: optimizelegibility;
+}
+
+.b-lazy, video{
+    display:inline-block;
+    position:absolute;
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
 }

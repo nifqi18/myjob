@@ -1,11 +1,13 @@
-import { Title } from '@angular/platform-browser';
+import { Title, DOCUMENT } from '@angular/platform-browser';
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostBinding, OnDestroy, OnInit, Inject } from '@angular/core';
 import { ActivationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs/Subject';
 import { takeUntil } from 'rxjs/operators/takeUntil';
 import { filter } from 'rxjs/operators/filter';
+
+
 
 import {
   ActionAuthLogin,
@@ -16,9 +18,12 @@ import {
 import { environment as env } from '@env/environment';
 
 import { NIGHT_MODE_THEME, selectorSettings } from './settings';
+import { FullscreenService } from '@app/fullscreen.service';
+import { Observable } from 'rxjs/Observable';
+import { NgDeepLazyLoad } from '@app/testmodule/lib/ngdeep.service';
 
 @Component({
-  selector: 'anms-root',
+  selector: 'dbs-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   animations: [routerTransition]
@@ -35,12 +40,11 @@ export class AppComponent implements OnInit, OnDestroy {
   logo = require('../assets/logo.png');
   navigation = [
     { link: 'about', label: 'About' },
-    { link: 'features', label: 'Features' },
-    { link: 'examples', label: 'Examples' }
+    { link: 'pekerjaan', label: 'Pekerjaan' },
   ];
   navigationSideMenu = [
     ...this.navigation,
-    { link: 'settings', label: 'Settings' }
+    { link: 'settings', label: 'Portofolio' }
   ];
   isAuthenticated;
 
@@ -48,10 +52,20 @@ export class AppComponent implements OnInit, OnDestroy {
     public overlayContainer: OverlayContainer,
     private store: Store<any>,
     private router: Router,
-    private titleService: Title
-  ) {}
+    private titleService: Title,
+    @Inject(DOCUMENT) private doc: any, private full: FullscreenService, private ij: NgDeepLazyLoad) {
+
+    this.ij.AttactCssOrScript();
+    this.ij.LoadCss('https://fonts.googleapis.com/icon?family=Material+Icons');
+  }
+
+  fullscreen: Observable<any>;
+
 
   ngOnInit(): void {
+
+    this.fullscreen = this.full.fullscreen$;
+
     this.store
       .select(selectorSettings)
       .pipe(takeUntil(this.unsubscribe$))
@@ -70,10 +84,23 @@ export class AppComponent implements OnInit, OnDestroy {
         classList.remove(...toRemove);
         classList.add(effectiveTheme);
       });
+
+    // hajar :P
     this.store
       .select(selectorAuth)
       .pipe(takeUntil(this.unsubscribe$))
-      .subscribe(auth => (this.isAuthenticated = auth.isAuthenticated));
+      .subscribe((auth: any) => {
+        console.log(auth);
+        if (typeof auth.Store !== 'undefined') {
+          if (auth.Store.token == '') {
+            return this.isAuthenticated = false;
+          }
+          return this.isAuthenticated = true;
+        }
+        return this.isAuthenticated = false;
+      });
+
+    // set title di setiap route 
     this.router.events
       .pipe(
         takeUntil(this.unsubscribe$),
@@ -89,6 +116,10 @@ export class AppComponent implements OnInit, OnDestroy {
           title ? `${title} - ${env.appName}` : env.appName
         );
       });
+
+    /*var script = this.doc.createElement('script');
+    script.src = 'assets/js/cssrelpreload.js';
+    this.doc.body.appendChild(script); */
   }
 
   ngOnDestroy(): void {
@@ -96,11 +127,15 @@ export class AppComponent implements OnInit, OnDestroy {
     this.unsubscribe$.complete();
   }
 
-  onLoginClick() {
-    this.store.dispatch(new ActionAuthLogin());
+  onLogoutClick() {
+    this.store.dispatch(new ActionAuthLogout(''));
   }
 
-  onLogoutClick() {
-    this.store.dispatch(new ActionAuthLogout());
+  onSettingClick(){
+    this.router.navigate(['/setting'])
+  }
+
+  onProfileClick(){
+    this.router.navigate(['/profile'])
   }
 }

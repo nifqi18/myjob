@@ -6,7 +6,6 @@ import { Observable } from 'rxjs/Observable';
 import { tap } from 'rxjs/operators/tap';
 
 import { LocalStorageService } from '../local-storage/local-storage.service';
-
 import { AUTH_KEY, AuthActionTypes } from './auth.reducer';
 
 @Injectable()
@@ -22,8 +21,8 @@ export class AuthEffects {
     return this.actions$
       .ofType(AuthActionTypes.LOGIN)
       .pipe(
-        tap(action =>
-          this.localStorageService.setItem(AUTH_KEY, { isAuthenticated: true })
+        tap((action:any) =>
+          this.localStorageService.setItem(AUTH_KEY, { Store: action.payload })
         )
       );
   }
@@ -31,9 +30,20 @@ export class AuthEffects {
   @Effect({ dispatch: false })
   logout(): Observable<Action> {
     return this.actions$.ofType(AuthActionTypes.LOGOUT).pipe(
-      tap(action => {
+      tap((action:any) => {
         this.router.navigate(['']);
-        this.localStorageService.setItem(AUTH_KEY, { isAuthenticated: false });
+        this.localStorageService.setItem(AUTH_KEY, { Store: action.payload });
+      })
+    );
+  }
+
+  @Effect({ dispatch: false })
+  SaveUserId(): Observable<Action> {
+    return this.actions$.ofType(AuthActionTypes.SAVE).pipe(
+      tap((action:any) => {
+        this.router.navigate(['']);
+        console.log(action);
+        this.localStorageService.setItem('userid', { Store: action.payload });
       })
     );
   }
