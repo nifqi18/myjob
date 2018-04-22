@@ -1,0 +1,107 @@
+<dbs-progress-bar></dbs-progress-bar>
+<div class="mode" [ngClass]="{'dialog-docked' : params}">
+  <div class="text-center" [hidden]="!params">
+    <p>
+      <b>Post Lowongan Kerja Anda</b>
+    </p>
+  </div>
+  <div class="full-width corner">
+    <div class="end" [hidden]="params">
+      <button matTooltip="Edit FullScreen Mode" matdTooltipPosition="before" class="button-round" mat-raised-button (click)="ExitFullScreent()"
+        aria-label="Edit FullScreen">Edit</button>
+    </div>
+  </div>
+
+  <mat-horizontal-stepper [linear]="true" #stepper="matHorizontalStepper">
+    <mat-step [stepControl]="FormKerjaA">
+      <div class="form-block">
+        <form [formGroup]="FormKerjaA" (submit)="PostKerja(FormKerjaA)">
+          <ng-template matStepLabel>Lowongan Kerja</ng-template>
+          <mat-form-field class="full-width">
+            <input type="text" matInput placeholder="Judul Lowongan Pekerjaan" formControlName="judul" required>
+          </mat-form-field>
+
+          <ckeditor name="myEditor" [formControl]="FormKerjaA.controls.content">
+          </ckeditor>
+
+
+
+          <div class="end">
+            <div #buttonShow class="button-fake">
+              <div style="color: #64d6e2" class="la-ball-pulse la-2x">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
+
+            <button mat-raised-button color="primary" #tref class="button-round" [disabled]="!buttonEnabled" aria-label="Selanjutnya">Selanjutnya</button>
+          </div>
+        </form>
+      </div>
+    </mat-step>
+    <mat-step [stepControl]="FormKerjaB">
+      <ng-template matStepLabel>Lengkapi Lowongan Anda</ng-template>
+      <div class="row">
+        <div class="col-md-2">
+          <div class="img-toggle-form">
+            <img src="assets/img/job.png" alt="Image Lowongan">
+          </div>
+        </div>
+        <div class="col-md-10">
+          <div class="form-block">
+            <form [formGroup]="FormKerjaB" (submit)="PostKerjaB(FormKerjaB)">
+              <mat-form-field class="full-width">
+                <input type="text" matInput placeholder="Lokasi Lowongan" formControlName="lokasi" required aria-label="daerah">
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                <mat-select placeholder="Tipe Lowongan" formControlName="type_lowongan">
+                  <mat-option *ngFor="let loker of _typelowongan" [value]="loker.value">
+                    {{ loker.viewValue }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field class="full-width">
+                <mat-select placeholder="Salari" formControlName="salari">
+                  <mat-option *ngFor="let salari of _typesalari" [value]="salari.value">
+                    {{ salari.viewValue }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+
+              <mat-form-field class="full-width">
+                <textarea matInput placeholder="Benefit" formControlName="benefit"></textarea>
+              </mat-form-field>
+
+              <div class="end">
+                <div #buttonShowB class="button-fake">
+                  <div style="color: #64d6e2" class="la-ball-pulse la-2x">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                </div>
+                <button mat-raised-button type="submit" class="button-round" color="primary" [disabled]="!buttonEnabled1" aria-label="Selanjutnya">Selanjutnya</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Selesai</ng-template>
+      <div class="app-loading" >
+        <img src="assets/svg/mat-circle-check.svg" #animate class="animate zoom-in img-fluid" alt="Icon Check" style="height : 300px">
+        <p> Terima Kasih , Lowongan Anda akan Segera Kami tampilkan !!!</p>
+      </div>
+      <div class="full-width">
+        <button mat-raised-button role="button" color="danger" (click)="Done()" aria-label="DONE">DONE</button>
+      </div>
+    </mat-step>
+
+  </mat-horizontal-stepper>
+</div>

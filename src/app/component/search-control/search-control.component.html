@@ -1,0 +1,5 @@
+<mat-card class="big-input" (ngClass)="{ 'has-fokus' : hasFokus }" style="border-radius : 10px;">
+  <input type="text" [formControl]="formControlA" (focus)="hasFokus = true" (blur)="hasFokus = false" [placeholder]="placeholder"
+    [value]="value" aria-label="search">
+  <ng-content></ng-content>
+</mat-card>

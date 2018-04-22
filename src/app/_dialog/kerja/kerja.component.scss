@@ -1,0 +1,261 @@
+.text-center {
+    text-align: center;
+}
+.mode {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    display: block;
+    overflow: hidden;
+}
+.mode.dialog-docked {
+    position: relative;
+    width: 100%;
+    left: 0;
+    top: 0;
+    display: block;
+    overflow: hidden;
+}
+.full-width.corner {
+    position: relative;
+    display: inline-block;
+    right: -3px;
+    top: -14.8px;
+}
+
+.form-block {
+    display: block;
+    position: relative;
+    border: solid #00fff6;
+    border-radius: 10px 20px 0 0;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);
+    border-width: 0.4px;
+    padding: 20px;
+    background: white;
+}
+.form-block::before {
+    display: block;
+    background: white;
+    content: url("assets/img/job-open.png");
+    height: 0px;
+    display: block;
+    /* width: 30px; */
+    position: absolute;
+    right: -110px;
+    top: 10px;
+    transform: rotate(-320deg);
+}
+
+
+.col-md-2 {
+    .img-toggle-form {
+        img {
+            position: absolute;
+            display: block;
+            height: 230px;
+            bottom: -10px;
+            left: -20px;
+            z-index: 4;
+        }
+   
+    }
+}
+
+.end img {
+    position: absolute;
+    height: 80px;
+    display: block;
+    top: 0px;
+    z-index: 5;
+    right: 10px;
+    transform: rotate(30deg);
+}
+
+.top-toggle {
+    position: relative;
+    top: -23.9px;
+    left: -30px;
+    padding-right: 26.4px;
+}
+mat-horizontal-stepper {
+    position: relative;
+    top: -30px;
+    background: transparent;
+    width: 100%;
+    left: 0;
+}
+mat-horizontal-stepper.dialog-docked {
+    position: relative;
+    top: 20px;
+    background: transparent;
+    width: 100%;
+    left: 0;
+}
+
+/*!
+ * Load Awesome v1.1.0 (http://github.danielcardoso.net/load-awesome/)
+ * Copyright 2015 Daniel Cardoso <@DanielCardoso>
+ * Licensed under MIT
+ */
+
+.button-fake {
+    position: absolute;
+    right: 0;
+    display: none;
+    &.show {
+        display : inline-flex;
+        border  : solid #bebecc;
+        border-width: 0.6px;
+        z-index: 3 !important;
+        border-radius: 4px;
+        background: #605e5e;
+    }
+}
+.la-ball-pulse,
+.la-ball-pulse > div {
+    position: relative;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+.la-ball-pulse {
+    display: inline-block;
+    font-size: 0;
+    color: #fff;
+}
+.la-ball-pulse.la-dark {
+    color: #333;
+}
+.la-ball-pulse > div {
+    display: inline-block;
+    float: none;
+    background-color: currentColor;
+    border: 0 solid currentColor;
+}
+.la-ball-pulse {
+    width: 54px;
+    height: 18px;
+}
+.la-ball-pulse > div:nth-child(1) {
+    -webkit-animation-delay: -200ms;
+       -moz-animation-delay: -200ms;
+         -o-animation-delay: -200ms;
+            animation-delay: -200ms;
+}
+.la-ball-pulse > div:nth-child(2) {
+    -webkit-animation-delay: -100ms;
+       -moz-animation-delay: -100ms;
+         -o-animation-delay: -100ms;
+            animation-delay: -100ms;
+}
+.la-ball-pulse > div:nth-child(3) {
+    -webkit-animation-delay: 0ms;
+       -moz-animation-delay: 0ms;
+         -o-animation-delay: 0ms;
+            animation-delay: 0ms;
+}
+.la-ball-pulse > div {
+    width: 10px;
+    height: 10px;
+    margin: 4px;
+    border-radius: 100%;
+    -webkit-animation: ball-pulse 1s ease infinite;
+       -moz-animation: ball-pulse 1s ease infinite;
+         -o-animation: ball-pulse 1s ease infinite;
+            animation: ball-pulse 1s ease infinite;
+}
+.la-ball-pulse.la-sm {
+    width: 26px;
+    height: 8px;
+}
+.la-ball-pulse.la-sm > div {
+    width: 4px;
+    height: 4px;
+    margin: 2px;
+}
+.la-ball-pulse.la-2x {
+    width: 108px;
+    height: 36px;
+}
+.la-ball-pulse.la-2x > div {
+    width: 15px;
+    height: 15.9px;
+    margin: 9.6px;
+}
+.la-ball-pulse.la-3x {
+    width: 162px;
+    height: 54px;
+}
+.la-ball-pulse.la-3x > div {
+    width: 30px;
+    height: 30px;
+    margin: 12px;
+}
+/*
+ * Animation
+ */
+@-webkit-keyframes ball-pulse {
+    0%,
+    60%,
+    100% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+                transform: scale(1);
+    }
+    30% {
+        opacity: .1;
+        -webkit-transform: scale(.01);
+                transform: scale(.01);
+    }
+}
+@-moz-keyframes ball-pulse {
+    0%,
+    60%,
+    100% {
+        opacity: 1;
+        -moz-transform: scale(1);
+             transform: scale(1);
+    }
+    30% {
+        opacity: .1;
+        -moz-transform: scale(.01);
+             transform: scale(.01);
+    }
+}
+@-o-keyframes ball-pulse {
+    0%,
+    60%,
+    100% {
+        opacity: 1;
+        -o-transform: scale(1);
+           transform: scale(1);
+    }
+    30% {
+        opacity: .1;
+        -o-transform: scale(.01);
+           transform: scale(.01);
+    }
+}
+@keyframes ball-pulse {
+    0%,
+    60%,
+    100% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+           -moz-transform: scale(1);
+             -o-transform: scale(1);
+                transform: scale(1);
+    }
+    30% {
+        opacity: .1;
+        -webkit-transform: scale(.01);
+           -moz-transform: scale(.01);
+             -o-transform: scale(.01);
+                transform: scale(.01);
+    }
+}
+
+
+
+ 

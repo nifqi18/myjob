@@ -1,0 +1,32 @@
+<div class="app-loading" [hidden]="!Logged">
+    <dbs-auth-loader>
+        <div style="color : green; margin-top : 10px;">
+            <p>{{EventConnected}}</p>
+        </div>
+    </dbs-auth-loader>
+</div>
+
+
+<div class="hidden" [ngClass]="{'show' : ( EventConnected == 'NoAuth') }">
+    <div class="pointer">
+        <button type="button" mat-icon-button role="button" aria-label="Close" (onclick)="Close()">
+            <mat-icon svgIcon="close"></mat-icon>
+        </button>
+    </div>
+
+    <div class="full-center">
+        <div class="top-small">
+            <p> Ups .. anda belum Login !!
+                <p>
+        </div>
+    </div>
+    <div [ngClass]="animateOnRouteEnter">
+        <anms-login></anms-login>
+    </div>
+</div>
+
+<div class="hidden" [ngClass]="{'show' : ( EventConnected == 'Authed') }">
+    <div class="full-center" style="left : 0">
+        <anms-kerja></anms-kerja>
+    </div>
+</div>

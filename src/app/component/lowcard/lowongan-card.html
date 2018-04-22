@@ -1,0 +1,41 @@
+<div class="display" block>
+
+    <div *ngFor="let lowongan of Lowker | async">
+
+        <div class="main-top-panel bordered padding-bottom">
+            <div class="top-end">
+                <div class="pojok mat-elevation-z3">
+                    <p> {{lowongan.filtercontent}}</p>
+                </div>
+            </div>
+
+            <mat-card class="course-card mat-elevation-z10" *ngFor="let low of lowongan.data " [routerLink]="['/view/pekerjaan', low.id]">
+                <div class="cover-profile">
+                    <img src="http://localhost:3333/img/bg.jpg" alt="background">
+                    <div class="for-pojok">
+                        <div class="for-corner">
+                            <a href="#" rel="nopener">{{low.type_lowongan}}</a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="image-place">
+                    <a [matTooltip]="low.user.email" matTooltipPosition="before" [routerLink]="'/user/' + low.user.id"
+                        rel="noopener">
+                        <img [src]=" 'http://localhost:3333/' + low.user.profile[0].imageurl" alt="Lowongan Profile">
+                    </a>
+                    <p> {{low.judul}}</p>
+
+                </div>
+                <mat-card-content>
+                    <p [innerHTML]="low.content"></p>
+                </mat-card-content>
+                <div class="panel-bottom">
+                    <p> {{low.updated_at | date:"dd MMMM yyyy hh:mm a" | lowercase }}</p>
+                </div>
+
+            </mat-card>
+        </div>
+    </div>
+</div>

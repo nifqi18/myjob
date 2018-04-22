@@ -1,0 +1,14 @@
+<p>
+  costum-list works!
+</p>
+
+
+<mat-list>
+
+  <mat-list-item *ngFor="let search of ItemSearch | async">
+    <a style="cursor : pointer;" >
+      <h4 mat-line>{{search.judul}}</h4>
+    </a>
+
+  </mat-list-item>
+</mat-list>

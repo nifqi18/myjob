@@ -1,0 +1,70 @@
+<anms-message [ShowMessage]="Login" [Message]="ErrorMessage"></anms-message>
+
+<div class="app-loading">
+  <mat-card-title>
+    <p> Jadilah Bagian dari Kami , Daftarkan Diri Anda Sekarang .. </p>
+  </mat-card-title>
+
+
+  <div class="containner-wrapper">
+    <form [formGroup]="FormRegister" (submit)="DoRegister(FormRegister)">
+      <mat-card>
+
+
+        <mat-card-content>
+
+          <mat-form-field class="full-width">
+            <input matInput [focus]="userEvent" placeholder="Email" formControlName="email" required aria-label="Email anda">
+            <mat-error *ngIf="email.hasError('Email')">Email sudah di daftarkan !!!</mat-error>
+            <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+              Silahkan masukan email valid
+            </mat-error>
+            <mat-error *ngIf="email.hasError('required')">
+              Email
+              <strong>di butuhkan</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <div class="full-width" style="display : inline-flex">
+            <mat-form-field style="padding-right : 20px ">
+              <input type="password" matInput placeholder="Password" formControlName="password" required aria-label="Password Anda">
+              <mat-hint *ngIf="password.hasError('required')"> Password tidak boleh kosong !</mat-hint>
+              
+              <mat-error *ngIf="password.hasError('MinLength')"> Password minimal 6 karakter </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input type="password" [focus]="passEvent" matInput placeholder="Re Password" formControlName="repassword" required aria-label="Repassword">
+
+              <mat-hint *ngIf="repassword.status == 'INVALID'"> Ketikan ulang password anda !</mat-hint>
+              <mat-error *ngIf="password.value != repassword.value">
+                Password dan repassword tidak sama
+              </mat-error>
+              <mat-error *ngIf="repassword.hasError('required')">
+                Kata sandi ulang
+                <strong>di butuhkan</strong>
+              </mat-error>
+
+            </mat-form-field>
+          </div>
+
+          <br>
+          <div class="full-witdth">
+            <p> {{ Message }}</p>
+            <button type="submit" mat-raised-button color="primary" style="width : 100% ; top : 10px;" [disabled]="!ButtonEnabled" aria-label="Daftarkan Diri Anda">
+              Daftar </button>
+            <div style="padding-top : 10px">
+              <button type="submit" mat-raised-button color="primary" style="width : 100% ; top : 10px;" [disabled]="ButtonEnabled" aria-label="Daftarkan dengan Facebook">
+                Use Facebook </button>
+              <div style="padding-top : 10px">
+                <button type="submit" mat-raised-button color="primary" style="width : 100% ; top : 10px;" [disabled]="ButtonEnabled" aria-label="Daftarkan dengan Google Account">
+                  Google Account </button>
+              </div>
+            </div>
+          </div>
+
+        </mat-card-content>
+      </mat-card>
+    </form>
+  </div>
+</div>

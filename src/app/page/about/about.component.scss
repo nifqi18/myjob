@@ -1,0 +1,206 @@
+@import 'styles-variables';
+
+.background {
+  padding: 100px 0;
+  position: relative;
+
+  h1 {
+    text-align: center;
+    font-size: 3em;
+    text-transform: uppercase;
+  }
+
+  .actions {
+    text-align: center;
+    margin: 50px;
+    z-index: 1;
+
+    span {
+      display: inline-block;
+      font-weight: bold;
+      padding: 20px 10px 30px 10px;
+    }
+
+    a {
+      margin: 0 5px 10px 0;
+
+      &.actions-main {
+        text-transform: uppercase;
+        padding: 3px 24px;
+      }
+
+      i {
+        position: relative;
+        top: -1px;
+      }
+    }
+  }
+
+  .get-started {
+    max-width: 700px;
+    margin: 50px auto 0 auto;
+    padding-bottom: 50px;
+    font-size: 0.9em;
+    letter-spacing: 0.01px;
+    overflow-wrap: break-word;
+    z-index: 1;
+    overflow: hidden;
+
+    code {
+      display: inline-block;
+      word-wrap: break-word;
+      white-space: normal;
+      margin: 0 0 10px 0;
+    }
+  }
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #092756;
+    background: -moz-radial-gradient(0% 100%, ellipse farthest-corner, rgba(35, 24, 82, 0.22) 10%,rgba(138,114,76,0) 40%),-moz-linear-gradient(top, rgba(57,173,219,.25) 0%, rgba(42,60,87,.4) 100%), -moz-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+    background: -webkit-radial-gradient(0% 100%, ellipse farthest-corner, rgba(35, 24, 82, 0.22) 10%,rgba(138,114,76,0) 40%), -webkit-linear-gradient(top, rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), -webkit-linear-gradient(-45deg, #670d10 0%,#092756 100%);
+    background: -o-radial-gradient(0% 100%, ellipse farthest-corner, rgba(35, 24, 82, 0.22) 10%,rgba(138,114,76,0) 40%), -o-linear-gradient(top, rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), -o-linear-gradient(-45deg, #670d10 0%,#092756 100%);
+    background: -ms-radial-gradient(0% 100%, ellipse farthest-corner, rgba(35, 24, 82, 0.22) 10%,rgba(138,114,76,0) 40%), -ms-linear-gradient(top, rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), -ms-linear-gradient(-45deg, #670d10 0%,#092756 100%);
+    background: -webkit-radial-gradient(0% 100%, ellipse farthest-corner, rgba(35, 24, 82, 0.22) 10%,rgba(138,114,76,0) 40%), linear-gradient(to bottom, rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), linear-gradient(135deg, #670d10 0%,#092756 100%);
+    background-size: farthest-corner;
+    
+    content: '';
+    z-index: 0;
+  }
+
+  .gradient {
+    &::before {
+      position: absolute;
+      top: 60%;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      content: '';
+      z-index: 0;
+    }
+  }
+
+  .container {
+    position: relative;
+    color : white;
+  }
+}
+
+@media (max-width: map-get($grid-breakpoints, md)) {
+  .background {
+    .get-started {
+      width: auto;
+    }
+  }
+}
+
+@media (max-width: map-get($grid-breakpoints, sm)) {
+  .background {
+    padding: 40px 0;
+
+    h1 {
+      line-height: 1em;
+    }
+
+    .actions {
+      margin: 40px 0 0 0;
+
+      span {
+        padding: 10px 0 20px 0;
+      }
+
+      a {
+        width: 100%;
+      }
+    }
+
+    .get-started {
+      width: auto;
+      margin: 40px auto 0 auto;
+      padding-bottom: 40px;
+    }
+  }
+}
+
+
+.mat-card.has-hidden{
+  visibility: hidden;
+}
+
+
+.content-search {
+  display: inline;
+}
+.clear {
+  clear: both;
+}
+
+// spinnner 
+$green: #eee;
+$blue: #eee;
+$red: #eee;
+$yellow: #eee;
+$white: #eee;
+$width: 25px;
+.loader {
+  width: $width;
+  height: $width; 
+  position: relative;
+  top: -3px;
+}
+
+.circular{
+  animation: rotate 2s linear infinite;
+  height: $width;
+  position: relative;
+  width: $width;
+}
+
+
+.path {
+  stroke-dasharray: 1,200;
+  stroke-dashoffset: 0;
+  animation:
+          dash 1.5s ease-in-out infinite,
+          color 6s ease-in-out infinite
+;
+  stroke-linecap: round;
+}
+
+@keyframes rotate{
+  100%{
+    transform: rotate(360deg);
+  }
+}
+@keyframes dash{
+  0%{
+    stroke-dasharray: 1,200;
+    stroke-dashoffset: 0;
+  }
+  50%{
+    stroke-dasharray: 89,200;
+    stroke-dashoffset: -35;
+  }
+  100%{
+    stroke-dasharray: 89,200;
+    stroke-dashoffset: -124;
+  }
+}
+@keyframes color{
+  100%, 0%{
+    stroke: red;
+  }
+  40%{
+    stroke: blue;
+  }
+  66%{
+    stroke: green;
+  }
+  80%, 90%{
+    stroke: yellow;
+  }
+}

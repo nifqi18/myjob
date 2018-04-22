@@ -1,0 +1,42 @@
+<div class="background">
+  <div class="gradient">
+    <div class="container">
+      <h1>Wujudkan Impian Anda</h1>
+      <p style="text-align:center;">
+        Temukan berbagai macam pekerjaan & magang serta informasi lain seputar karier!
+      </p>
+
+      <mat-form-field floatLabel="never" fullscreen>
+        <mat-label>Cari Pekerjaan</mat-label>
+        <input matInput [matAutocomplete]="reactiveAuto" [formControl]="form" (keydown.enter)="HasEnter(form)">
+        <mat-card class="absolute margin-top-10 hidden no-padding" fullscreen [ngClass]="{ 'show': hasSearch }" >
+          <div class="end padding-right-10">
+
+            <div class="inline-flex" style="color : green">
+              <i style="font-size: 14px; font-weight: 600;"> Saya sedang beruntung </i>
+              <div class="loader margin-left-5">
+                <svg class="circular" viewBox="25 25 50 50">
+                  <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+                </svg>
+              </div>
+            </div>
+
+          </div>
+        </mat-card>
+        <!-- result as mat-autocomplre -->
+        <mat-autocomplete #reactiveAuto="matAutocomplete" [displayWith]="displayFn">
+          <mat-option *ngFor="let state of filteredStates | async" [value]="state.judul">
+            <span>{{ state.judul }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <div class="get-started" [ngClass]="animateOnRouteEnter">
+        <h2>Jadilah Bagian dari Kami</h2>
+        <p> Kami menyediakan berbagai macam
+          <strong>Lowongan Kerja</strong> mencoba menjadi yang pertama sebagai mesin pencari lowongan kerja, mengumpulkan semua lowongan
+          kerja di website-website pencari lowongan kerja dan semuanya kami rangkum untuk anda </p>
+      </div>
+    </div>
+  </div>
+</div>

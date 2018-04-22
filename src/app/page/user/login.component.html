@@ -1,0 +1,43 @@
+<div class="toast" [ngClass]="{'show' : Login}">
+  <div class="desc">{{ErrorMessage}} !!!</div>
+</div>
+
+
+<div class="app-loading aboutpage">
+  <div class="containner-wrapper">
+
+    <form [formGroup]="FormLogin" (submit)="DoLogin(FormLogin)">
+      <mat-card>
+
+        <mat-card-content>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Email" formControlName="email" required type="email">
+            <mat-hint *ngIf="email.status == 'INVALID'">Masukan Email !</mat-hint>
+
+            <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+              Silahkan masukan email valid
+            </mat-error>
+            <mat-error *ngIf="email.hasError('required')">
+              Email
+              <strong>di butuhkan</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input type="password" matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" formControlName="password">
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+          </mat-form-field>
+
+          <p> Belum Punya akun ?
+            <a routerLink="/auth/register" rel="noopener">Daftar</a>
+          </p>
+
+          <div class="full-witdth">
+            <button type="submit" mat-button color="primary" style="width : 100%" [disabled]="!LoginEnabled" aria-label="Masuk"> Masuk </button>
+          </div>
+
+        </mat-card-content>
+      </mat-card>
+    </form>
+  </div>
+</div>
